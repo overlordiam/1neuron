@@ -1,0 +1,1 @@
+## add the data for or gate and call perceptron clas
