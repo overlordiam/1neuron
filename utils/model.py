@@ -16,7 +16,7 @@ class Perceptron:
         self.X = X
         self.y = y
 
-        X_with_bias = np.c_[self.X, -np.ones(len(self.X), 1)]
+        X_with_bias = np.c_[self.X, -np.ones((len(self.X), 1))]
         print(f"X_with_bias: {X_with_bias}")
 
         for epoch in range(self.epochs):
@@ -35,8 +35,16 @@ class Perceptron:
 
             # BACKWARD PROPAGATION
 
-            self.weights = self.weights + self.eta * np.dot(self.error, X_with_bias.T)
+            self.weights = self.weights + self.eta * np.dot(X_with_bias.T, self.error)
             print(f"Updated weights after \n{epoch}/{self.epochs}: \n{self.weights}")
 
             print("##"*10)
 
+    def predict(self, X):
+        X_with_bias = np.c_[X, -np.ones((len(X), 1))]
+        return self.activationFunction(X_with_bias, self.weights)
+
+    def total_loss(self):
+        total_loss = np.sum(self.error)
+        print(f"total loss: {total_loss}")
+        return total_loss
