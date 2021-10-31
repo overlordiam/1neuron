@@ -35,7 +35,7 @@ if __name__ == "__main__":
     }
 
     ETA = 0.3
-    EPOCHS = 1000
+    EPOCHS = 100
 
     try:
         logging.info("<<<<<<<< STARTED TRAINING >>>>>>>>")
