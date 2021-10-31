@@ -8,16 +8,30 @@ import joblib
 
 
 def prepare_data(df):
-    X = df.iloc[:, :-1]
-    y = df.iloc[:, -1]
-    return X, y
+  """It takes in a dataset and returns the predictors and target values
+
+  Args:
+      df (pd.dataFrame): It is a dataset in the form of panadas DataFrame 
+
+  Returns:
+      tuple: Returns a tuple of predictors and target 
+  """
+  X = df.iloc[:, :-1]
+  y = df.iloc[:, -1]
+  return X, y
 
 
 def save_model(model, filename):
-    model_dir = "models"
-    os.makedirs(model_dir, exist_ok=True)
-    filepath = os.path.join(model_dir, filename)
-    joblib.dump(model, filepath)
+  """It saves the trained model to a file with the given path.
+
+  Args:
+      model (python object): It is a trained algorithm which can predict values based on inputs, weights
+      filename (string): Using this, a path is created where the model is saved to
+  """   
+  model_dir = "models"
+  os.makedirs(model_dir, exist_ok=True)
+  filepath = os.path.join(model_dir, filename)
+  joblib.dump(model, filepath)
 
 
 def predict_model(model, X):
